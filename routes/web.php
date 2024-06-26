@@ -9,18 +9,16 @@ use App\Http\Controllers\ContatoController;
 //     return view('welcome');
 // });
 
-Route::get('/', [PrincipalController::class, 'principal']);
-Route::get('/sobre-nos', [SobreNosController::class, 'sobreNos']);
-Route::get('/contatos', [ContatoController::class, 'contato']);
-Route::get('/login', function () {return 'login';});
+Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
+Route::get('/sobre-nos', [SobreNosController::class, 'sobreNos'])->name('site.sobreNos');
+Route::get('/contatos', [ContatoController::class, 'contato'])->name('site.contatos');
+Route::get('/login', function () {return 'login';})->name('site.login');
 //agrupando com prefix as rotas
 Route::prefix('/app')->group(function() {
-    Route::get('/clientes', function () {return 'clientes';});
-    Route::get('/fornecedores', function () {return 'fornecedores';});
-    Route::get('/produtos', function() {return 'produtos';});
+    Route::get('/clientes', function () {return 'clientes';})->name('app.clientes');
+    Route::get('/fornecedores', function () {return 'fornecedores';})->name('app.fornecedores');
+    Route::get('/produtos', function() {return 'produtos';})->name('app.produtos');
 });
-
-
 
 // Route::get('/contatos/{nome}/{sobrenome}/{apelido?}', function ($nome, $sobrenome, $apelido = 'Não foi inserido nada'){
 //     echo "'Retornando: $nome - $sobrenome - $apelido";

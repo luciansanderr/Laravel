@@ -1,12 +1,12 @@
 <h3>Sobre Nós (view)</h3>
 <ul>
     <li>
-        <a href="/">Principal</a>
+        <a href="{{ route('site.index') }}">Principal</a>
     </li>
     <li>
-        <a href="/sobre-nos">Sobre Nós</a>
+        <a href="{{ route('site.sobreNos') }}">Sobre Nós</a>
     </li>
     <li>
-        <a href="/contatos">Contatos</a>
+        <a href="{{ route('site.contatos') }}">Contatos</a>
     </li>
 </ul>
