@@ -28,3 +28,13 @@ Route::prefix('/app')->group(function() {
 // Route::get('/produto/{nome}/{categoria_id}', function (string $nome, int $categoria_id){
 //     echo "'Retornando: $nome - $categoria_id";
 // })->where('categoria_id','[0-9]+')->where('nome','[A-Za-z]+');
+
+Route::get('/rota1', function() {echo 'rota1'; })->name('site.rota1');
+
+Route::get('/rota2', function() { return redirect()->route('site.rota1'); });
+
+Route::redirect('rota2','rota1');
+//utilizando rota de callback, para tratamento de erro.
+Route::fallback(function(){
+    echo 'A rota acessada não existe.<a href="'.route('site.index').'">Clique aqui</a> aqui para retornar.';
+});
