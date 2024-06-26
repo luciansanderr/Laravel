@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\TesteController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -36,5 +37,7 @@ Route::get('/rota2', function() { return redirect()->route('site.rota1'); });
 Route::redirect('rota2','rota1');
 //utilizando rota de callback, para tratamento de erro.
 Route::fallback(function(){
-    echo 'A rota acessada não existe.<a href="'.route('site.index').'">Clique aqui</a> aqui para retornar.';
+    echo 'A rota acessada não existe.<a href="'.route('site.index').'"> Clique aqui</a> aqui para retornar.';
 });
+
+Route::get('/teste/{n1}/{n2}', [TesteController::class, 'teste'])->name('site.teste');
