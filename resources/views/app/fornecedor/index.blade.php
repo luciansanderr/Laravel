@@ -17,3 +17,23 @@
 @else
     <h3>Não existem fornecedores</h3>
 @endif
+
+<hr>
+<h3>Utilização do unless</h3>
+@isset($fornecedores)
+Fornecedor: {{$fornecedores[0]['nome']}}
+<br>
+Status: {{$fornecedores[0]['status']}}
+<br>
+{{-- @if (!($fornecedores[0]['status'] == 'S'))
+    Fornecedor Inativo
+@endif --}}
+<br>
+@unless ($fornecedores[0]['status'] == 'S')
+    Fornecedor Inativo
+@endunless
+<br>
+@isset($fornecedores[0]['cnpj'])
+    Cnpj: {{$fornecedores[0]['cnpj']}}
+@endisset
+@endisset
