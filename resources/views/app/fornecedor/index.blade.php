@@ -41,3 +41,6 @@ Status: {{$fornecedores[0]['status']}}
     Vazio
 @endempty
 @endisset
+<br>
+<hr>
+{{($fornecedores[0]['cnpj'] ?? 'Informação não Preenchida')}}
