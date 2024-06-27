@@ -36,4 +36,8 @@ Status: {{$fornecedores[0]['status']}}
 @isset($fornecedores[0]['cnpj'])
     Cnpj: {{$fornecedores[0]['cnpj']}}
 @endisset
+<br>
+@empty($fornecedores[1]['cnpj'])
+    Vazio
+@endempty
 @endisset
