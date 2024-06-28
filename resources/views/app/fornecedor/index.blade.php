@@ -57,3 +57,20 @@ Utilizando While
     <?php $i++ ?>
     @endwhile
 @endisset
+<hr>
+Utilizando Foreach
+<hr>
+
+@isset($fornecedores)
+    @foreach ($fornecedores as $indece => $fornecedor)
+        Nome: {{ $fornecedor['nome'] ?? '' }}
+        <br>
+        Status: {{$fornecedor['status'] ?? ''}}
+        <br>
+        Cnpj: {{ $fornecedor['cnpj'] ?? '' }}
+        <br>
+        Telefone: {{ $fornecedor['ddd'] ?? '' }} - {{ $fornecedor['telefone'] ?? ''}}
+        <hr>
+    @endforeach
+@endisset
+
