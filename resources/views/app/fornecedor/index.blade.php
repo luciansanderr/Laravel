@@ -24,8 +24,11 @@
         @default
         Nem um dos DD selecionados.
     @endswitch
+    <br>
 @endisset
 <hr>
+Utilizando For
+<br>
 @isset($fornecedores)
     @for ($i = 0; isset($fornecedores[$i]); $i++)
         Nome: {{ $fornecedores[$i]['nome'] ?? '' }}
@@ -35,6 +38,22 @@
         Cnpj: {{ $fornecedores[$i]['cnpj'] ?? '' }}
         <br>
         Telefone: {{ $fornecedores[$i]['ddd'] ?? '' }} - {{ $fornecedores[$i]['telefone'] ?? ''}}
-        <br>
+        <hr>
     @endfor
+@endisset
+Utilizando While
+<br>
+@isset($fornecedores)
+    <?php $i = 0 ?>
+    @while (isset($fornecedores[$i]))
+        Nome: {{ $fornecedores[$i]['nome'] ?? '' }}
+        <br>
+        Status: {{$fornecedores[$i]['status'] ?? ''}}
+        <br>
+        Cnpj: {{ $fornecedores[$i]['cnpj'] ?? '' }}
+        <br>
+        Telefone: {{ $fornecedores[$i]['ddd'] ?? '' }} - {{ $fornecedores[$i]['telefone'] ?? ''}}
+        <hr>
+    <?php $i++ ?>
+    @endwhile
 @endisset
