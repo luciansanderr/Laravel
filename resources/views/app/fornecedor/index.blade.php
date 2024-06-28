@@ -1,46 +1,27 @@
-<h1>Fornecedor</h1>
-{{-- Comentando, descartado--}}
-<?= 'Olá'?>
-<br>
-@php
-    //comentando
-    echo 'Estou aqui';
-@endphp
-<br>
-
-{{-- @dd($fornecedores) --}}
-
-@if (count($fornecedores) > 0 && count($fornecedores) < 10)
-    <h3>Existem alguns fornecedores. Limite: 10</h3>
-@elseif (count($fornecedores) > 10)
-    <h3>Existem vários fornecedores. Mais de 10</h3>
-@else
-    <h3>Não existem fornecedores</h3>
-@endif
-
-<hr>
-<h3>Utilização do unless</h3>
+<h3>Fornecedores</h3>
 @isset($fornecedores)
-Fornecedor: {{$fornecedores[0]['nome']}}
-<br>
-Status: {{$fornecedores[0]['status']}}
-<br>
-{{-- @if (!($fornecedores[0]['status'] == 'S'))
-    Fornecedor Inativo
-@endif --}}
-<br>
-@unless ($fornecedores[0]['status'] == 'S')
-    Fornecedor Inativo
-@endunless
-<br>
-@isset($fornecedores[0]['cnpj'])
-    Cnpj: {{$fornecedores[0]['cnpj']}}
+    Nome: {{ $fornecedores[0]['nome'] ?? '' }}
+    <br>
+    {{--mesmo que um if (unless)--}}
+    @unless ($fornecedores[0]['status'] == 'S')
+    Status: {{$fornecedores[0]['status'] ?? ''}}
+    @endunless
+    <br>
+    Cnpj: {{ $fornecedores[0]['cnpj'] ?? '' }}
+    <br>
+    Telefone: {{ $fornecedores[1]['ddd'] ?? '' }} {{ $fornecedores[0]['telefone'] ?? ''}}
+    <br>
+    @switch($fornecedores[1]['ddd'])
+        @case(11)
+            São Paulo - SP
+            @break
+        @case(32)
+            Juiz de Fora - MG
+            @break
+        @case(85)
+            Fortaleza - CE
+        @break
+        @default
+        Nem um dos DD selecionados.
+    @endswitch
 @endisset
-<br>
-@empty($fornecedores[1]['cnpj'])
-    Vazio
-@endempty
-@endisset
-<br>
-<hr>
-{{($fornecedores[0]['cnpj'] ?? 'Informação não Preenchida')}}

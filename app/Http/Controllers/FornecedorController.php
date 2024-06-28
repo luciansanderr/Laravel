@@ -13,12 +13,23 @@ class FornecedorController extends Controller
         0 => [
             'nome'=>'Fornecedor 1',
             'status' => 'N',
-            'cnpj' => '00.000.000/000-00'
+            'cnpj' => '00.000.000/000-00',
+            'ddd' => '11', // São Paulo - SP
+            'telefone' => '85966352'
         ],
         1 => [
-            'nome'=>'Fornecedor 1',
+            'nome'=>'Fornecedor 2',
             'status' => 'N',
-            //'cnpj' => '00.000.000/000-00'
+            'cnpj' => '00.000.000/000-00',
+            'ddd' => '32', // Juiz de Fora - MG
+            'telefone' => '85966352'
+        ],
+        2 => [
+            'nome'=>'Fornecedor 3',
+            'status' => 'N',
+            'cnpj' => '00.000.000/000-00',
+            'ddd' => '85', // Fortaleza - CE
+            'telefone' => '85966352'
         ]
         ];
 
