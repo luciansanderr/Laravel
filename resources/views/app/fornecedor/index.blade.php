@@ -74,3 +74,22 @@ Utilizando Foreach
     @endforeach
 @endisset
 
+<hr>
+<br>
+Utlizando Forelse
+<hr>
+<br>
+@isset($fornecedores)
+    @forelse ($fornecedores as $indece => $fornecedor)
+        Nome: {{ $fornecedor['nome'] ?? '' }}
+        <br>
+        Status: {{$fornecedor['status'] ?? ''}}
+        <br>
+        Cnpj: {{ $fornecedor['cnpj'] ?? '' }}
+        <br>
+        Telefone: {{ $fornecedor['ddd'] ?? '' }} - {{ $fornecedor['telefone'] ?? ''}}
+        <hr>
+    @empty
+    Não passou nada por aqui.
+    @endforelse
+@endisset
