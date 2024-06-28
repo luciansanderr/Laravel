@@ -11,7 +11,7 @@
     <br>
     Telefone: {{ $fornecedores[1]['ddd'] ?? '' }} {{ $fornecedores[0]['telefone'] ?? ''}}
     <br>
-    @switch($fornecedores[1]['ddd'])
+    @switch($fornecedores[8]['ddd'] ?? '')
         @case(11)
             São Paulo - SP
             @break
@@ -24,4 +24,17 @@
         @default
         Nem um dos DD selecionados.
     @endswitch
+@endisset
+<hr>
+@isset($fornecedores)
+    @for ($i = 0; isset($fornecedores[$i]); $i++)
+        Nome: {{ $fornecedores[$i]['nome'] ?? '' }}
+        <br>
+        Status: {{$fornecedores[$i]['status'] ?? ''}}
+        <br>
+        Cnpj: {{ $fornecedores[$i]['cnpj'] ?? '' }}
+        <br>
+        Telefone: {{ $fornecedores[$i]['ddd'] ?? '' }} - {{ $fornecedores[$i]['telefone'] ?? ''}}
+        <br>
+    @endfor
 @endisset
