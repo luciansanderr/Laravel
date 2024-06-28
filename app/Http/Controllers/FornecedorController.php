@@ -34,7 +34,7 @@ class FornecedorController extends Controller
         ];
 
         //subscrevendo para testar o forelse
-        $fornecedores = [];
+        //$fornecedores = [];
 
         // $msg = isset($fornecedores[1]['cnpj']) ? 'Cnpj Informado' : 'Cnpj não informado';
         // echo $msg;

@@ -81,7 +81,8 @@ Utlizando Forelse
 <br>
 @isset($fornecedores)
     @forelse ($fornecedores as $indece => $fornecedor)
-        Nome: {{ $fornecedor['nome'] ?? '' }}
+        {{--escapamento da impressão de tag no blade--}}
+        Nome: {@{{ $fornecedor['nome'] ?? '' }}}
         <br>
         Status: {{$fornecedor['status'] ?? ''}}
         <br>
