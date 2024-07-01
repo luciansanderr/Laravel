@@ -14,6 +14,7 @@ use App\Http\Controllers\FornecedorController;
 Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
 Route::get('/sobre-nos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos');
 Route::get('/contatos', [ContatoController::class, 'contato'])->name('site.contato');
+Route::post('/contatos', [ContatoController::class, 'contato'])->name('site.contato');
 Route::get('/login', function () {return 'login';})->name('site.login');
 //agrupando com prefix as rotas
 Route::prefix('/app')->group(function() {
