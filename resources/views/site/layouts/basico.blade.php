@@ -7,6 +7,7 @@
     </head>
 
     <body>
+        @include('site.layouts.partials.cabecalho')
         @yield('conteudo')
     </body>
 </html>
