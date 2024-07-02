@@ -8,7 +8,7 @@
     </div>
 
     <div class="informacao-pagina">
-       @component('site.layouts._components.formulario')
+       @component('site.layouts._components.formulario', ['classe' => 'borda-preta'])
         <p>A nossa equipe analisará a mensagem e retornaremos o mais breve possível</p>
         <p>Nosso tempo de resposta é de 48h</p>
        @endcomponent
