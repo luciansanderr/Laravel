@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('fornecedores', function (Blueprint $table) {
             $table->string('uf', 2);
-            $table->string('email', 150);
+            $table->string('email', 50);
         });
     }
 
@@ -22,6 +22,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('fornecedores', function (Blueprint $table) {
+            //remover colunas
+            // $table->dropColumn('uf');
+            // $table->dropColumn('email');
+            //pode passar também uma array de colunas
+            //$table->dropColumn(['uf', 'email']);
+        });
     }
 };
