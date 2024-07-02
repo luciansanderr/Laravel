@@ -1,3 +1,4 @@
+{{ $slot }}
 <div class="contato-principal">
     <form action={{ route('site.contato')}} method="post">
         @csrf
