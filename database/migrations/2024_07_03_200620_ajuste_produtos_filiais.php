@@ -39,6 +39,16 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+
+        Schema::table('produtos', function (Blueprint $table) {
+            $table->decimal('preco_venda', 8, 2);
+            $table->integer('estoque_minimo');
+            $table->integer('estoque_maximo');
+        });
+
+        Schema::dropIfExists('produto_filiais');
+        
+        Schema::dropIfExists('filiais');
+
     }
 };
