@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Fornecedor extends Model
 {
     use HasFactory;
+    //utilizado para direcionar para a tabela com o nome diferente (Model: Fornecedor Migration: Fornecedores (Fornecedors))
+    protected $table = 'fornecedores';
 }
