@@ -13,20 +13,22 @@ class SiteContatoSeeder extends Seeder
      */
     public function run(): void
     {
-        $contato = new SiteContato;
-        $contato->nome = 'Testando mais uma vez';
-        $contato->telefone = '(98) 99996-3265';
-        $contato->email = 'maisumavez@gmail.com';
-        $contato->motivo_contato = 2;
-        $contato->mensagem = 'Estou testando mais uma vez';
-        $contato->save();
+        // $contato = new SiteContato;
+        // $contato->nome = 'Testando mais uma vez';
+        // $contato->telefone = '(98) 99996-3265';
+        // $contato->email = 'maisumavez@gmail.com';
+        // $contato->motivo_contato = 2;
+        // $contato->mensagem = 'Estou testando mais uma vez';
+        // $contato->save();
 
-        SiteContato::create([
-            'nome' => 'Sobre o sistema',
-            'telefone' => '(98) 98596-3265',
-            'email' => 'sobre@gmail.com',
-            'motivo_contato' => 1,
-            'mensagem' => 'Estou aqui respondendo os erros',
-        ]);
+        // SiteContato::create([
+        //     'nome' => 'Sobre o sistema',
+        //     'telefone' => '(98) 98596-3265',
+        //     'email' => 'sobre@gmail.com',
+        //     'motivo_contato' => 1,
+        //     'mensagem' => 'Estou aqui respondendo os erros',
+        // ]);
+       // factory(SiteContatoFactory::class, 100)->create();
+        \App\Models\SiteContato::factory()->count(10)->create();
     }
 }
