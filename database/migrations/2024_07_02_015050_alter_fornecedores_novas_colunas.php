@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('fornecedores', function (Blueprint $table) {
-            $table->string('uf', 2);
-            $table->string('email', 50);
+            $table->string('uf', 500);
+            $table->string('email', 500);
         });
     }
 

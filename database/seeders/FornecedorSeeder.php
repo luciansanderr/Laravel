@@ -13,21 +13,21 @@ class FornecedorSeeder extends Seeder
      */
     public function run(): void
     {
-        //instanciando o objeto
-        $fornecedor = new Fornecedor();
-        $fornecedor->nome = 'Casa da Farinha Nova';
-        $fornecedor->uf = 'MA';
-        $fornecedor->email = 'casadafarinha@gmail.com';
-        $fornecedor->site = 'casadafarinha.com.br';
-        $fornecedor->save();
+        // //instanciando o objeto
+        // $fornecedor = new Fornecedor();
+        // $fornecedor->nome = 'Casa da Farinha Nova';
+        // $fornecedor->uf = 'MA';
+        // $fornecedor->email = 'casadafarinha@gmail.com';
+        // $fornecedor->site = 'casadafarinha.com.br';
+        // $fornecedor->save();
 
-        // este método deve ter atenção fillable na model
-        Fornecedor::create([
-            'nome' => 'Fornecedor Nova Onda',
-            'uf' => 'PA',
-            'email'=> 'novaonda@gmail.com',
-            'site' => 'novaonda.com.br'
-        ]);
+        // // este método deve ter atenção fillable na model
+        // Fornecedor::create([
+        //     'nome' => 'Fornecedor Nova Onda',
+        //     'uf' => 'PA',
+        //     'email'=> 'novaonda@gmail.com',
+        //     'site' => 'novaonda.com.br'
+        // ]);
 
         //insert
         //não está funcionando nesta vers
@@ -37,5 +37,6 @@ class FornecedorSeeder extends Seeder
         //     'email' => 'direto.com.br',
         //     'site' => 'site.com.br'
         // ]);
+        \App\Models\Fornecedor::factory()->count(50)->create();
     }
 }
