@@ -9,5 +9,5 @@ class SiteContato extends Model
 {
     use HasFactory;
     //protected $table = ['site_contatos']; // as vezes o tinker não funciona com esse protected
-    protected $fillable = ['nome', 'telefone', 'email', 'motivo_contato, mensagem'];
+    protected $fillable = ['nome', 'telefone', 'email', 'motivo_contato', 'mensagem'];
 }
