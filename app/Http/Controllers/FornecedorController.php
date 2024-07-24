@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Fornecedor;
 
 class FornecedorController extends Controller
 {
@@ -40,5 +41,10 @@ class FornecedorController extends Controller
         // echo $msg;
 
         return view('app.fornecedor.index', compact('fornecedores'));
+    }
+
+    public function salvar(Request $Request) {
+        Fornecedor::create($Request->all());
+        return view('app.fornecedor');
     }
 }
