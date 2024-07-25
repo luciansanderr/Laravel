@@ -1,6 +1,6 @@
 {{ $slot }}
 <div class="contato-principal">
-    <form action={{ route('site.contato')}} method="get">
+    <form action={{ route('site.contato')}} method="post">
         @csrf
         <input name='nome' type="text" placeholder="Nome" class="{{ $classe }}">
         <br>
@@ -19,4 +19,10 @@
         <br>
         <button type="submit" class="{{ $classe }}">ENVIAR</button>
     </form>
+</div>
+
+<div style="position: absolute; top: 0px; left: 0px; width: 100%; background: red">
+    <pre>
+        {{ print_r($errors) }}
+    </pre>
 </div>

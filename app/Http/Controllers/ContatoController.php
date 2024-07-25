@@ -27,17 +27,28 @@ class ContatoController extends Controller
         return view('site.contato');
     }
 
-    public function salvar (Request $request) {
-        SiteContato::create($request->all());
-        //validação e tratamento de erros
-        $request->validate([
-            'nome' => 'required',
-            // 'telefone' => 'required',
-            // 'email' => 'required',
-            // 'motivo_contato' => 'required',
-            // 'mensagem' => 'required'
-        ]);
+    // public function salvar (Request $request) {
+    //     SiteContato::create($request->all());
+    //     //validação e tratamento de erros
+    //     $request->validate([
+    //         'nome' => 'required',
+    //         // 'telefone' => 'required',
+    //         // 'email' => 'required',
+    //         // 'motivo_contato' => 'required',
+    //         // 'mensagem' => 'required'
+    //     ]);
 
-        return view('site.contato');
+    //     return view('site.contato');
+    // }
+
+    public function salvar(Request $request) {
+        $request->validate ([
+            'nome' => 'required',
+            'telefone' =>'required',
+            'motivo_contato' => 'required',
+            'mensagem' => 'required',
+        ]);
+        //SiteContato::create($request->all());
+        return view('app.contato');
     }
 }
