@@ -43,7 +43,7 @@ class ContatoController extends Controller
 
     public function salvar(Request $request) {
         $request->validate ([
-            'nome' => 'required',
+            'nome' => 'required|min:3|max:10',
             'telefone' =>'required',
             'motivo_contato' => 'required',
             'mensagem' => 'required',
