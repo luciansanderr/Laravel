@@ -5,15 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SiteContato;
+use App\Models\MotivoContato;
 
 class ContatoController extends Controller
 {
     public function contato (Request $request) {
-        $motivo_contatos = [
-            '1' => 'Elogio',
-            '2' => 'Dúvida',
-            '3' => 'Reclamação'
-        ];
+        $motivo_contatos = MotivoContato::all();
         // $contato = new SiteContato();
         // $contato->nome = $request->input('nome');
         // $contato->telefone = $request->input('telefone');
