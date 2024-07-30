@@ -9,6 +9,11 @@ use App\Models\SiteContato;
 class ContatoController extends Controller
 {
     public function contato (Request $request) {
+        $motivo_contatos = [
+            '1' => 'Elogio',
+            '2' => 'Dúvida',
+            '3' => 'Reclamação'
+        ];
         // $contato = new SiteContato();
         // $contato->nome = $request->input('nome');
         // $contato->telefone = $request->input('telefone');
@@ -24,7 +29,7 @@ class ContatoController extends Controller
         //$contato->create($request->all());
         //print_r($contato->getAttributes());
         //$contato->save();
-        return view('site.contato');
+        return view('site.contato', ['motivo_contatos' => $motivo_contatos]);
     }
 
     // public function salvar (Request $request) {
@@ -42,6 +47,11 @@ class ContatoController extends Controller
     // }
 
     public function salvar(Request $request) {
+        $motivo_contatos = [
+            '1' => 'Elogio',
+            '2' => 'Dúvida',
+            '3' => 'Reclamação'
+        ];
         $request->validate ([
             'nome' => 'required|min:3|max:10',
             'telefone' =>'required',
@@ -49,6 +59,7 @@ class ContatoController extends Controller
             'mensagem' => 'required',
         ]);
         //SiteContato::create($request->all());
-        return view('app.contato');
+
+        return view('site.contato', ['motivo_contatos' => $motivo_contatos]);
     }
 }
