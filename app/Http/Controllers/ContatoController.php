@@ -44,20 +44,22 @@ class ContatoController extends Controller
     // }
 
     public function salvar(Request $request) {
-        $motivo_contatos = [
-            '1' => 'Elogio',
-            '2' => 'Dúvida',
-            '3' => 'Reclamação'
-        ];
+        // $motivo_contatos = [
+        //     '1' => 'Elogio',
+        //     '2' => 'Dúvida',
+        //     '3' => 'Reclamação'
+        // ];
+        //validação
         $request->validate ([
             'nome' => 'required|min:3|max:10',
             'telefone' =>'required',
             'email' => 'email',
-            'motivo_contato' => 'required',
+            'motivo_contatos_id' => 'required',
             'mensagem' => 'required',
         ]);
-        //SiteContato::create($request->all());
-
-        return view('site.contato', ['motivo_contatos' => $motivo_contatos]);
+        //salvando no banco
+        SiteContato::create($request->all());
+        //retornando para index do projeto
+        return redirect()->route('site.index');
     }
 }
