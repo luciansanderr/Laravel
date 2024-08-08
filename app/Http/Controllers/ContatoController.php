@@ -53,7 +53,7 @@ class ContatoController extends Controller
         $request->validate ([
             //validação [unique] usando o nome a tabela do banco
             'nome' => 'required|min:3|max:10|unique:site_contatos',
-            'telefone' =>'required',
+            'telefone' =>'required|max:11',
             'email' => 'email',
             'motivo_contatos_id' => 'required',
             'mensagem' => 'required',
