@@ -50,14 +50,28 @@ class ContatoController extends Controller
         //     '3' => 'Reclamação'
         // ];
         //validação
-        $request->validate ([
+        $request->validate
+        (
+            [
             //validação [unique] usando o nome a tabela do banco
             'nome' => 'required|min:3|max:10|unique:site_contatos',
             'telefone' =>'required|max:11',
             'email' => 'email',
             'motivo_contatos_id' => 'required',
             'mensagem' => 'required',
-        ]);
+            ],
+            //validações dos campos personalizados, msm na tela
+            [
+                'nome.required' => 'Campo Obrigatótio!',
+                'nome.min' => 'Mínimo de caractere permitido 3',
+                'nome.max' => 'Máximo de caractere permitido 10',
+                'telefone.required' => 'Campo Obrigatório',
+                'telefone.max' => 'Máximo de número',
+                'email.required' => 'Campo Obrigatório',
+                'motivo_contatos_id.required' => 'Campo Obrigatório',
+                'mensagem.required' => 'Campo Obrigatório'
+            ]
+        );
         //salvando no banco
         SiteContato::create($request->all());
         //retornando para index do projeto

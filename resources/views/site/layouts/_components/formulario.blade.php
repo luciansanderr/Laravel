@@ -40,7 +40,8 @@
         <button type="submit" class="{{ $classe }}">ENVIAR</button>
     </form>
 </div>
-@if ($errors->any()) {
+{{-- Outra maneira utilizada para validação dos campos --}}
+{{-- @if ($errors->any()) {
     <div style="position: absolute; top: 0px; left: 0px; width: 100%; background: red">
         @foreach ($errors->all() as $erro)
             {{ $erro }}
@@ -48,4 +49,4 @@
         @endforeach
     </div>
 }
-@endif
+@endif --}}
