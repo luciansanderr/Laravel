@@ -4,10 +4,7 @@
         @csrf
         <input name='nome' value= "{{old('nome')}}" type="text" placeholder="Nome" class="{{ $classe }}">
         {{-- verificação em relação ao erro dos input --}}
-        @if ($errors->has('nome')) {
-            {{ $errors->first('nome') }}
-        }
-        @endif
+        {{ $errors->has('nome') ? $errors->first('nome') : '' }}
         <br>
         <input name='telefone' value= "{{old('telefone')}}" type="text" placeholder="Telefone" class="{{ $classe }}">
         {{-- verificação de erro de forma simplificada --}}

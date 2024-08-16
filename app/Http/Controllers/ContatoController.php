@@ -62,14 +62,14 @@ class ContatoController extends Controller
             ],
             //validações dos campos personalizados, msm na tela
             [
-                'nome.required' => 'Campo Obrigatótio!',
+                'nome.required' => 'Campo Obrigatório!',
                 'nome.min' => 'Mínimo de caractere permitido 3',
                 'nome.max' => 'Máximo de caractere permitido 10',
-                'telefone.required' => 'Campo Obrigatório',
+                'telefone.required' => 'Campo Obrigatório!',
                 'telefone.max' => 'Máximo de número',
-                'email.required' => 'Campo Obrigatório',
-                'motivo_contatos_id.required' => 'Campo Obrigatório',
-                'mensagem.required' => 'Campo Obrigatório'
+                'email.required' => 'Campo Obrigatório!',
+                'motivo_contatos_id.required' => 'Campo Obrigatório!',
+                'mensagem.required' => 'Campo Obrigatório!'
             ]
         );
         //salvando no banco
