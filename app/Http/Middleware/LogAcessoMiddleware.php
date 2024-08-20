@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Models\LogAcesso;
 
 class LogAcessoMiddleware
 {
@@ -16,6 +17,7 @@ class LogAcessoMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         //return $next($request);
+        LogAcesso::create(['log' => 'Ip xyz requisitou a rota abcd']);
         return Response('Paramos a requisição no middleware');
     }
 }
