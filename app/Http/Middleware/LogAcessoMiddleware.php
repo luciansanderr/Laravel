@@ -17,7 +17,12 @@ class LogAcessoMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         //return $next($request);
-        LogAcesso::create(['log' => 'Ip xyz requisitou a rota abcd']);
+        //LogAcesso::create(['log' => 'Ip xyz requisitou a rota abcd']);
+        //return Response('Paramos a requisição no middleware');
+        //dd($request);
+        $ip = $request->server->get('REMOTE_ADDR');
+        $rota = $request->getRequestUri();
+        LogAcesso::create(['log' => "Ip $ip requisitou a rota $rota"]);
         return Response('Paramos a requisição no middleware');
     }
 }
