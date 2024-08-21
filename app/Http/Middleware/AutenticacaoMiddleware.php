@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Models\LogAcesso;
 
 class AutenticacaoMiddleware
 {
@@ -15,7 +16,11 @@ class AutenticacaoMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        //return $next($request);
-        return Response('Permissão negada! Precisa de autenticação.');
+        //verifica se o usuário tem acesso a rota
+        if (true) {
+            return $next($request);
+        } else {
+            return Response('Permissão negada! Precisa de autenticação.');
+        }
     }
 }

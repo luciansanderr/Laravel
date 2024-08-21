@@ -6,7 +6,8 @@ use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\TesteController;
 use App\Http\Controllers\FornecedorController;
-use \App\Http\Middleware\LogAcessoMiddleware;
+use App\Http\Middleware\LogAcessoMiddleware;
+use App\Http\Middleware\AutenticacaoMiddleware;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -20,8 +21,9 @@ Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contat
 Route::get('/login', function () {return 'login';})->name('site.login');
 //agrupando com prefix as rotas
 Route::prefix('/app')->group(function() {
-    Route::middleware('log.acesso', 'autenticacao')
-    ->get('/clientes', function () {return 'clientes';})->name('app.clientes');
+    Route::middleware('log-acesso', 'autenticacao')
+    ->get('/clientes', function () {return 'clientes';})
+    ->name('app.clientes');
     Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('app.fornecedor');
     Route::get('/produtos', function() {return 'produtos';})->name('app.produtos');
 });
