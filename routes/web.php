@@ -8,6 +8,7 @@ use App\Http\Controllers\TesteController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Middleware\LogAcessoMiddleware;
 use App\Http\Middleware\AutenticacaoMiddleware;
+use App\Http\Controllers\LoginController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -18,7 +19,10 @@ Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
 Route::get('/sobre-nos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos')->middleware('log.acesso');
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
 Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
+
 Route::get('/login', [LoginController::class, 'index'])->name('site.login');
+Route::post('/login', [LoginController::class, 'autenticar'])->name('site.login');
+
 //agrupando com prefix as rotas
 Route::middleware('autenticacao:padrao')->prefix('/app')->group(function() {
     Route::get('/clientes', function () {return 'clientes';})->name('app.clientes');
