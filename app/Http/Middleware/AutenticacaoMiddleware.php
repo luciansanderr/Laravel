@@ -14,8 +14,9 @@ class AutenticacaoMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, $recebendo_metodo): Response
     {
+        echo $recebendo_metodo;
         //verifica se o usuário tem acesso a rota
         if (true) {
             return $next($request);
