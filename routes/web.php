@@ -18,7 +18,7 @@ Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
 Route::get('/sobre-nos', [SobreNosController::class, 'sobrenos'])->name('site.sobrenos')->middleware('log.acesso');
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
 Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
-Route::get('/login', function () {return 'login';})->name('site.login');
+Route::get('/login', [LoginController::class, 'index'])->name('site.login');
 //agrupando com prefix as rotas
 Route::middleware('autenticacao:padrao')->prefix('/app')->group(function() {
     Route::get('/clientes', function () {return 'clientes';})->name('app.clientes');
