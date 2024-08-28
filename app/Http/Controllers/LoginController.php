@@ -5,11 +5,22 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
-    public function index() {
-        return view('site.login');
+    public function index(Request $request) {
+        // retornando erro, e menssagem de login
+        $erro = '';
+        if ($request->get('erro') == '1') {
+            $erro = 'Usuário e Senha invalidos';
+        }
+
+        if ($request->get('erro') == '2') {
+            $erro = 'Usuários e senhas incorretos para o padrão clientes';
+        }
+        
+        return view('site.login', ['titulo' => 'Login', 'erro' => $erro]);
     }
 
     // public function autenticar() {
@@ -35,9 +46,6 @@ class LoginController extends Controller
         $email = $request->get('usuario');
         $password = $request->get('senha');
 
-        echo "Usuário: $email | Senha: $password";
-        echo "<br>";
-
         // iniciar o model
         $user = new User();
         // comparações passo o parâmetro que chega pleo request e depois comparo o que está no banco
@@ -45,12 +53,24 @@ class LoginController extends Controller
             ->where('password', $password)
             ->get()
             ->first();
-        // condições e validações com confirmação de usuário
-        if (isset($usuario->name)) {
-            echo "Usuário Logado";
+
+        if (isset($usuario)) {
+            // sessão em php para login, do lado do servidor
+            session_start();
+            $_SESSION['nome'] = $usuario->name;
+            $_SESSION['email'] = $usuario->email;
+
+            return Redirect()->route('app.clientes');
         } else {
-            echo "Usuário Incorreto";
+            return Redirect()->route('index.login');
         }
+        // condições e validações com confirmação de usuário
+        // if (isset($usuario->name)) {
+        //     echo "Usuário Logado";
+        // } else {
+        //     // redirecinando para a tela login
+        //     return redirect()->route('site.login', ['erro'=> 1]);
+        // }
             // echo "<pre>";
             // print_r($usuario);
             // echo "</pre>";

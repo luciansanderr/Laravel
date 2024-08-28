@@ -16,12 +16,18 @@ class AutenticacaoMiddleware
      */
     public function handle(Request $request, Closure $next, $recebendo_metodo): Response
     {
-        echo $recebendo_metodo;
+       // echo $recebendo_metodo;
         //verifica se o usuário tem acesso a rota
-        if (true) {
+        // if (true) {
+        //     return $next($request);
+        // } else {
+        //     return Response('Permissão negada! Precisa de autenticação.');
+        // }
+        session_start();
+        if (isset($_SESSION['email']) && $_SESSION['email'] != '') {
             return $next($request);
         } else {
-            return Response('Permissão negada! Precisa de autenticação.');
+            return redirect()->route('site.login', ['erro' => 2]);
         }
     }
 }
