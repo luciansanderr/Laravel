@@ -75,4 +75,8 @@ class LoginController extends Controller
             // print_r($usuario);
             // echo "</pre>";
     }
+
+    public function sair() {
+        echo 'Sair';
+    }
 }
