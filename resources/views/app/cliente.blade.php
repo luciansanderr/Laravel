@@ -2,6 +2,6 @@
 
 @section('titulo', 'Cliente')
 
-@section('Conteudo')
+@section('conteudo')
     <br><br><br><br>Cliente
 @endsection

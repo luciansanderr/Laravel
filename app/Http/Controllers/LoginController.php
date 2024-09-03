@@ -17,7 +17,7 @@ class LoginController extends Controller
         }
 
         if ($request->get('erro') == '2') {
-            $erro = 'Usuários e senhas incorretos para o padrão clientes';
+            $erro = 'Usuários e senhas incorretos para o padrão cliente';
         }
         
         return view('site.login', ['titulo' => 'Login', 'erro' => $erro]);
@@ -52,6 +52,7 @@ class LoginController extends Controller
         $usuario = $user->where('email', $email)
             ->where('password', $password)
             ->get()
+            //primeiro a retornar na consulta no sql
             ->first();
 
         if (isset($usuario)) {
@@ -60,9 +61,9 @@ class LoginController extends Controller
             $_SESSION['nome'] = $usuario->name;
             $_SESSION['email'] = $usuario->email;
 
-            return Redirect()->route('app.clientes');
+            return Redirect()->route('app.home');
         } else {
-            return Redirect()->route('index.login');
+            return redirect()->route('site.login', ['erro'=> 1]);
         }
         // condições e validações com confirmação de usuário
         // if (isset($usuario->name)) {
@@ -77,6 +78,8 @@ class LoginController extends Controller
     }
 
     public function sair() {
-        echo 'Sair';
+        //rota para destroir a session criada pelo php
+        session_destroy();
+        return redirect()->route('site.index');
     }
 }

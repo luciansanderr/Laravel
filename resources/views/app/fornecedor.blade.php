@@ -2,6 +2,6 @@
 
 @section('titulo', 'Fornecedor')
 
-@section('Conteudo')
+@section('conteudo')
     <br><br><br><br>Fornecedor
 @endsection
