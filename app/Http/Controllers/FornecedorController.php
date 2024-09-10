@@ -16,7 +16,27 @@ class FornecedorController extends Controller
         return view("app.fornecedor.listar");
     }
 
-    public function adicionar() {
+    public function adicionar(Request $request) {
+        if(!empty($request->input("_token"))) {
+            $regras = [
+                'nome' => 'required|min:3|max:50',
+                'site' => 'required',
+                'uf' => 'required|min:2|max:2',
+                'email' => 'email'
+            ];
+            $feedback = [
+                'required' => 'Campo obrigatório',
+                'nome.min' => 'Quatidade mínima de caracter',
+                'nome.max' => 'Quantidade máxima de caracter',
+                'uf.min' => 'Quatidade mínima de caracter',
+                'uf.max' => 'Quantidade máxima de caracter',
+                'email.email' => 'Precisa de uma email válido' 
+            ];
+            $request->validate($regras, $feedback);
+
+            echo "Chegamos até aqui";
+        }
+        //print_r ($request->all());
         return view("app.fornecedor.adicionar");
     }
     
