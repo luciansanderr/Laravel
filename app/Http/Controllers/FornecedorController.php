@@ -18,12 +18,14 @@ class FornecedorController extends Controller
 
     public function adicionar(Request $request) {
         if(!empty($request->input("_token"))) {
+            //regras da validação
             $regras = [
                 'nome' => 'required|min:3|max:50',
                 'site' => 'required',
                 'uf' => 'required|min:2|max:2',
                 'email' => 'email'
             ];
+            //resposta da validação
             $feedback = [
                 'required' => 'Campo obrigatório',
                 'nome.min' => 'Quatidade mínima de caracter',
@@ -32,9 +34,15 @@ class FornecedorController extends Controller
                 'uf.max' => 'Quantidade máxima de caracter',
                 'email.email' => 'Precisa de uma email válido' 
             ];
+
+            //validação
             $request->validate($regras, $feedback);
 
-            echo "Chegamos até aqui";
+            //chamando o método e inserindo na tabela
+            $fornecedor = new Fornecedor();
+            $fornecedor->create($request->all());
+    
+            //echo "Chegamos até aqui";
         }
         //print_r ($request->all());
         return view("app.fornecedor.adicionar");
