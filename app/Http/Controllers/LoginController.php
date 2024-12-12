@@ -19,13 +19,9 @@ class LoginController extends Controller
         if ($request->get('erro') == '2') {
             $erro = 'Usuários e senhas incorretos para o padrão cliente';
         }
-        
+
         return view('site.login', ['titulo' => 'Login', 'erro' => $erro]);
     }
-
-    // public function autenticar() {
-    //     echo "Chegamos até aqui";
-    // }
 
     public function autenticar(Request $request) {
         // regras de validação
