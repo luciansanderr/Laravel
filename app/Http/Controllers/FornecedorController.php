@@ -23,11 +23,13 @@ class FornecedorController extends Controller
         return view("app.fornecedor.listar", ['fornecedores' => $fornecedores]);
     }
 
-    public function adicionar(Request $request) {
+    public function adicionar(Request $request)
+    {
 
         $msg = '';
 
-        if(!empty($request->input("_token"))) {
+        //inclusão
+        if(!empty($request->input("_token") && empty($request->input('id')))) {
             //regras da validação
             $regras = [
                 'nome' => 'required|min:3|max:50',
@@ -55,8 +57,30 @@ class FornecedorController extends Controller
             //echo "Chegamos até aqui";
             $msg = 'Cadastro realizado com sucesso!';
         }
+
+        //edição
+        if(!empty($request->input("_token") && !empty($request->input('id')))) {
+            $fornecedor = Fornecedor::find($request->input('id'));
+            $update = $fornecedor->update($request->all());
+
+            if ($update) {
+                $msg = "Atualização com Sucesso";
+            } else {
+                $msg = "Atualização com Falha";
+            }
+
+            return redirect()->route("app.fornecedor.editar", ["id" => $request->input('id'), "msg" => $msg]);
+        }
+
         //print_r ($request->all());
         return view("app.fornecedor.adicionar", ["msg" => $msg]);
+    }
+
+    public function editar($id, $msg = '')
+    {
+        $fornecedor = Fornecedor::find($id);
+
+        return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor, 'msg' => $msg]);
     }
 
     // public function index () {
