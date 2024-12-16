@@ -4,7 +4,7 @@
 
 @section('conteudo')
     <div class="conteudo-pagina">
-        
+
     <div class="titulo-pagina-2">
         <p>Fornecedor</p>
     </div>
@@ -15,7 +15,8 @@
             <li><a href=" {{ route('app.fornecedor') }} ">Consultar</a></li>
         </ul>
     </div>
-
+    <div>
+    </div>
     <div class="informacao-pagina">
         <div style="width: 30%; margin-left: auto; margin-right: auto;">
             <form method="post" action="{{ route('app.fornecedor.listar') }}">

@@ -83,6 +83,20 @@ class FornecedorController extends Controller
         return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor, 'msg' => $msg]);
     }
 
+    public function excluir($id)
+    {
+        $delete = Fornecedor::find($id)->delete();
+        //de fato remover o registro
+        //Fornecedor::find($id)->softDelete();
+        if ($delete) {
+            $msg = "Deletado com Sucesso";
+        } else {
+            $msg = "Falha ao deletar";
+        }
+
+        return redirect()->route('app.fornecedor.listar', ['msg' => $msg]);
+    }
+
     // public function index () {
 
     //     $fornecedores = [
