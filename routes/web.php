@@ -12,6 +12,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\ProdutoDetalheController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -38,8 +39,11 @@ Route::middleware('autenticacao:padrao')->prefix('/app')->group(function() {
     Route::get('/fornecedor/adicionar', [FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
     Route::post('/fornecedor/adicionar', [FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
     Route::get('/fornecedor/excluir/{id}/{msg?}', [FornecedorController::class, 'excluir'])->name('app.fornecedor.excluir');
-
+    //produtos
     Route::resource('produto', ProdutoController::class);
+    //produto_detalhe
+    Route::resource('produto-detalhe', ProdutoDetalheController::class);
+
 });
 
 // Route::get('/contatos/{nome}/{sobrenome}/{apelido?}', function ($nome, $sobrenome, $apelido = 'Não foi inserido nada'){
