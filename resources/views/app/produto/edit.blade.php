@@ -23,6 +23,13 @@
                 @csrf
                 {{-- todos os atributs serão afetados --}}
                 @method('PUT')
+                <select name="fornecedor_id">
+                    <option>----- Selecione um fornecedor -----</option>
+                    @foreach ($fornecedores as $fornecedor)
+                        <option value="{{ $fornecedor->id }}" {{ ($unidade->id ?? old('fornecedor')) == $fornecedor->id ? 'selected' : '' }}>{{ $fornecedor->nome }}</option>
+                    @endforeach
+                {{ $errors->has('fornecedor_id') ? $errors->first('fornecedor_id') : '' }}
+                </select>
                 <input type="text" name="nome" value="{{ $produto->nome ?? old('nome') }}" placeholder="Nome" class="borda-preta"></input>
                 {{ $errors->has('nome') ? $errors->first('nome') : ''}}
                 <input type="text" name="descricao" value="{{ $produto->descricao ?? old('descricao') }}" placeholder="Descricão" class="borda-preta"></input>

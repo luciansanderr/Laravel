@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fornecedor;
 use App\Models\Produto;
 use App\Models\Unidade;
 use App\Models\ProdutoDetalhe;
@@ -36,7 +37,8 @@ class ProdutoController extends Controller
     public function create()
     {
         $unidades = Unidade::all();
-        return view('app.produto.create', ['unidades' => $unidades]);
+        $fornecedores = Fornecedor::all();
+        return view('app.produto.create', ['unidades' => $unidades, 'fornecedores' => $fornecedores]);
     }
 
     /**
@@ -80,7 +82,8 @@ class ProdutoController extends Controller
     public function edit(Produto $produto)
     {
         $unidades = Unidade::all();
-        return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]);
+        $fornecedores = Fornecedor::all();
+        return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades, 'fornecedores' => $fornecedores]);
     }
 
     /**
@@ -103,7 +106,6 @@ class ProdutoController extends Controller
             'unidade_id.exists' => 'A unidade selecionada deve existir no banco.',
             'unidade_id.min' => 'Selecione uma unidade válida.',
         ];
-
         $request->validate($regras, $feedbacks);
         $produto->update($request->all());
         return redirect()->route('produto.show', ['produto' => $produto->id]);
