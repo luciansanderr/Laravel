@@ -14,4 +14,9 @@ class Fornecedor extends Model
     protected $table = 'fornecedores';
     protected $fillable = ['nome', 'uf', 'email', 'site'];
 
+    public function produtos()
+    {
+        return $this->hasMany(Produto::class, 'fornecedor_id', 'id');
+    }
+
 }

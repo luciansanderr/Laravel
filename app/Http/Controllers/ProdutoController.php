@@ -50,7 +50,8 @@ class ProdutoController extends Controller
             'nome' => 'required|min:3|max:20',
             'descricao' => 'required|min:3|max:2000',
             'peso' => 'required|integer',
-            'unidade_id' => 'required|integer|min:1|exists:unidades,id'
+            'unidade_id' => 'required|integer|min:1|exists:unidades,id',
+            'fornecedor_id' => 'required|integer|min:1|exists:fornecedores,id'
         ];
 
         $feedbacks = [
@@ -60,6 +61,7 @@ class ProdutoController extends Controller
             'peso.integer' => 'Números inteiros',
             'unidade_id.exists' => 'A unidade selecionada deve existir no banco.',
             'unidade_id.min' => 'Selecione uma unidade válida.',
+            'fornecedor_id.exists' => 'O fornecedor selecionado deve existir no banco.',
         ];
 
         $request->validate($regras, $feedbacks);
@@ -95,7 +97,8 @@ class ProdutoController extends Controller
             'nome' => 'required|min:3|max:20',
             'descricao' => 'required|min:3|max:2000',
             'peso' => 'required|integer',
-            'unidade_id' => 'required|integer|min:1|exists:unidades,id'
+            'unidade_id' => 'required|integer|min:1|exists:unidades,id',
+            'fornecedor_id' => 'required|integer|min:1|exists:fornecedores,id'
         ];
 
         $feedbacks = [
@@ -105,6 +108,7 @@ class ProdutoController extends Controller
             'peso.integer' => 'Números inteiros',
             'unidade_id.exists' => 'A unidade selecionada deve existir no banco.',
             'unidade_id.min' => 'Selecione uma unidade válida.',
+            'fornecedor_id.exists' => 'O fornecedor selecionado deve existir no banco.',
         ];
         $request->validate($regras, $feedbacks);
         $produto->update($request->all());

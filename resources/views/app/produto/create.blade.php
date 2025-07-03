@@ -22,9 +22,9 @@
             <form method="post" action="{{ route('produto.store') }}">
                 @csrf
                 <select name="fornecedor_id">
-                        <option>----- Selecione um fornecedor -----</option>
+                    <option>----- Selecione um fornecedor -----</option>
                     @foreach ($fornecedores as $fornecedor)
-                        <option value="{{ $fornecedor->id }}" {{ old('unidade_id') == $fornecedor->id ? 'selected' : '' }}>{{ $fornecedor->nome }}</option>
+                        <option value="{{ $fornecedor->id }}" {{ ($produto->fornecedor_id ?? old('fornecedor_id')) == $fornecedor->id ? 'selected' : '' }}>{{ $fornecedor->nome }}</option>
                     @endforeach
                 {{ $errors->has('fornecedor_id') ? $errors->first('fornecedor_id') : '' }}
                 </select>
