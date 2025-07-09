@@ -3,15 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pedido;
+use App\Models\Cliente;
 
 class PedidoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $pedidos = Pedido::paginate(10);
+        return view("app.pedido.index", ['pedidos' => $pedidos, 'request' => request()->all()]);
     }
 
     /**
@@ -19,7 +22,8 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        //
+        $clientes = Cliente::all();
+        return view('app.pedido.create', ['clientes' => $clientes]);
     }
 
     /**
@@ -27,7 +31,18 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $regras = [
+            "cliente_id" => "required|exists:clientes,id",
+        ];
+        $feedback = [
+            "cliente_id.required" => "O campo cliente é obrigatório.",
+            "cliente_id.exists" => "O cliente selecionado não existe.",
+        ];
+        $request->validate($regras, $feedback);
+
+        Pedido::create($request->all());
+
+        return redirect()->route('pedido.index')->with('success', 'Pedido cadastrado com sucesso!');
     }
 
     /**
