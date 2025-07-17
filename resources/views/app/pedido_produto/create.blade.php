@@ -24,11 +24,11 @@
             <h4>Apresentar os items do pedido</h4>
         <div style="width: 30%; margin-left: auto; margin-right: auto;">
                 <h4>Items Do Pedido</h4>
-                <table>
+                    <table style="border: solid 1px; width: 100%;">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Nome do Produto</th>
+                        <th>Id</th>
+                        <th>Nome</th>
                         </tr>
                     </thead>
                     <tbody>
