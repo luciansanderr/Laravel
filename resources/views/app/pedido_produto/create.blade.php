@@ -24,7 +24,7 @@
             <h4>Apresentar os items do pedido</h4>
         <div style="width: 30%; margin-left: auto; margin-right: auto;">
                 <h4>Items Do Pedido</h4>
-                    <table style="border: solid 1px; width: 100%;">
+                    <table border=1 style="border: solid 1px; width: 100%;">
                     <thead>
                         <tr>
                         <th>Id</th>
