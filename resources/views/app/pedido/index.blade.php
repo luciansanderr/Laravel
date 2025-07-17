@@ -33,6 +33,7 @@
                 <tr>
                     <td>{{ $pedido->id }}</td>
                     <td>{{ $pedido->cliente_id }}</td>
+                    <td><a href="{{ route('pedido-produto.create', ['pedido' => $pedido->id]) }}">Adicionar Produto</a></td>
                     <td><a href="{{ route('pedido.show', ['pedido' => $pedido->id])}} ">Visualizador</a></td>
                     {{-- Para deletar --}}
                     <td>
