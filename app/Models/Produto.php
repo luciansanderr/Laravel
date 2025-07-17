@@ -18,4 +18,7 @@ class Produto extends Model
     public function fornecedor() {
         return $this->belongsTo('App\Models\Fornecedor', 'fornecedor_id', 'id');
     }
+    public function pedidos() {
+        return $this->belongsToMany(Pedido::class, PedidoProduto::class);
+    }
 }
