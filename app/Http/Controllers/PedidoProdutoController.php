@@ -44,11 +44,15 @@ class PedidoProdutoController extends Controller
         ];
         $request->validate($regras, $feedback);
 
-        $pedidoProduto = new PedidoProduto();
-        $pedidoProduto->pedido_id = $pedido->id;
-        $pedidoProduto->produto_id = $request->get('produto_id');
-        $pedidoProduto->quantidade = $request->get('quantidade');
-        $pedidoProduto->save();
+        // $pedidoProduto = new PedidoProduto();
+        // $pedidoProduto->pedido_id = $pedido->id;
+        // $pedidoProduto->produto_id = $request->get('produto_id');
+        // $pedidoProduto->quantidade = $request->get('quantidade');
+        // $pedidoProduto->save();
+
+        //$pedido->produtos; // os registros do ralacionamento
+        //podemos inserir um registro por meio do relacionamento
+        $pedido->produtos()->attach($request->get('produto_id'), ['quantidade' => $request->get('quantidade')]);
 
         return redirect()->route('pedido-produto.create', ['pedido' => $pedido->id]);
     }
