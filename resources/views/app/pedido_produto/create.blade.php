@@ -27,8 +27,10 @@
                     <table border=1 style="border: solid 1px; width: 100%;">
                     <thead>
                         <tr>
-                        <th>Id</th>
-                        <th>Nome</th>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Data Cadastro</th>
+                            <th>Quantidade</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +38,9 @@
                             <tr>
                                 <td>{{ $produto->id }}</td>
                                 <td>{{ $produto->nome }}</td>
+                                {{-- utilizando o format para formatar data --}}
+                                <td>{{ $produto->pivot->created_at->format('d/m/Y')}}</td>
+                                <td>{{ $produto->pivot->quantidade }}</td>
                             </tr>
                         @endforeach
                     </tbody>

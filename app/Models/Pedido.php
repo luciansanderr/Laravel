@@ -13,10 +13,11 @@ class Pedido extends Model
     // Produto é a tabela relacionada, Tabela pedido produto é interediária
     public function produtos()
     {
-        return $this->belongsToMany(Produto::class, PedidoProduto::class, 'pedido_id', 'produto_id');
+        return $this->belongsToMany(Produto::class, PedidoProduto::class, 'pedido_id', 'produto_id')->withPivot('created_at', 'quantidade');
     }
     // public function produtos()
     // {
     //     return $this->belongsToMany('App\Models\Produto', 'pedido_produto', 'pedido_id', 'produto_id');
     // }
+    // método withPivot utilizado para trazer valores específicos da tabela intermediária
 }

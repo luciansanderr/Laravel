@@ -4,10 +4,17 @@
     <select name="produto_id">
         <option value="">----- Selecione um Produto -----</option>
         @foreach ($produtos as $produto)
-            <option value="{{ $produto->id }}" {{ ($produto->produto_id ?? old('produto_id')) == $produto->id ? 'selected' : '' }}>{{ $produto->nome }}</option>
+            <option value="{{ $produto->id }}" {{ (old('produto_id', $registro->produto_id ?? '') == $produto->id) ? 'selected' : '' }}>
+                {{ $produto->nome }}
+            </option>
         @endforeach
-    {{ $errors->has('produto_id') ? $errors->first('produto_id') : '' }}
     </select>
+    @if ($errors->has('produto_id'))
+        <div>{{ $errors->first('produto_id') }}</div>
+    @endif
+
+    <input type="number" name="quantidade" value="{{ old('quantidade') }}" placeholder="Quantidade">
+    {{ $errors->has('quantidade') ? $errors->first('quantidade') : '' }}
 
     <button type="submit" class="borda-preta">Cadastrar</button>
 </form>

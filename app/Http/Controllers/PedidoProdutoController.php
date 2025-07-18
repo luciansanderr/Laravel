@@ -34,15 +34,20 @@ class PedidoProdutoController extends Controller
     {
         $regras = [
             'produto_id' => 'exists:produtos,id',
+            'quantidade' => 'required|integer'
         ];
         $feedback = [
             'produto_id.exists' => 'O produto informado não existe!',
+            'produto_id.required' => 'O produto é obrigatório!',
+            'quantidade.required' => 'A quantidade é obrigatória!',
+            'quantidade.integer' => 'A quantidade deve ser um número inteiro!'
         ];
         $request->validate($regras, $feedback);
 
         $pedidoProduto = new PedidoProduto();
         $pedidoProduto->pedido_id = $pedido->id;
         $pedidoProduto->produto_id = $request->get('produto_id');
+        $pedidoProduto->quantidade = $request->get('quantidade');
         $pedidoProduto->save();
 
         return redirect()->route('pedido-produto.create', ['pedido' => $pedido->id]);
